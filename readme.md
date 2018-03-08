@@ -38,7 +38,6 @@ This paginator component assumes that u have a styles for a paginator with the f
 	    onPageChange(currentPage)  {
 		    this.setState(prevSate => {
 				  return {
-					    posts: json, // do stuff with json
 					     meta: { // update meta data
 								  ...prevSate.meta,
 								  currentPage
