@@ -203,7 +203,7 @@ var Paginator = function (_Component) {
           _react2.default.createElement(
             "a",
             {
-              className: options.anchorClassName ? optionsa.anchorClassName : "",
+              className: options.anchorClassName ? options.anchorClassName : "",
               onClick: function onClick() {
                 return _this2.props.onChangePage(1, pager.numberOfPages);
               }
@@ -219,7 +219,7 @@ var Paginator = function (_Component) {
           _react2.default.createElement(
             "a",
             {
-              className: options.anchorClassName ? optionsa.anchorClassName : "",
+              className: options.anchorClassName ? options.anchorClassName : "",
               onClick: function onClick() {
                 return pager.currentPage > 1 && _this2.props.onChangePage(pager.currentPage - 1, pager.numberOfPages);
               }
@@ -237,7 +237,7 @@ var Paginator = function (_Component) {
             _react2.default.createElement(
               "a",
               {
-                className: options.anchorClassName ? optionsa.anchorClassName : "",
+                className: options.anchorClassName ? options.anchorClassName : "",
                 onClick: function onClick() {
                   return _this2.props.onChangePage(page, pager.numberOfPages);
                 }
@@ -254,7 +254,7 @@ var Paginator = function (_Component) {
           _react2.default.createElement(
             "a",
             {
-              className: options.anchorClassName ? optionsa.anchorClassName : "",
+              className: options.anchorClassName ? options.anchorClassName : "",
               onClick: function onClick() {
                 return pager.currentPage < pager.numberOfPages && _this2.props.onChangePage(pager.currentPage + 1, pager.numberOfPages);
               }
@@ -270,7 +270,7 @@ var Paginator = function (_Component) {
           _react2.default.createElement(
             "a",
             {
-              className: options.anchorClassName ? optionsa.anchorClassName : "",
+              className: options.anchorClassName ? options.anchorClassName : "",
               onClick: function onClick() {
                 return _this2.props.onChangePage(pager.numberOfPages, pager.numberOfPages);
               }

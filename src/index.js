@@ -89,7 +89,7 @@ export default class Paginator extends Component {
           >
             <a
               className={
-                options.anchorClassName ? optionsa.anchorClassName : ""
+                options.anchorClassName ? options.anchorClassName : ""
               }
               onClick={() => this.props.onChangePage(1, pager.numberOfPages)}
             >
@@ -101,7 +101,7 @@ export default class Paginator extends Component {
           >
             <a
               className={
-                options.anchorClassName ? optionsa.anchorClassName : ""
+                options.anchorClassName ? options.anchorClassName : ""
               }
               onClick={() =>
                 pager.currentPage > 1 &&
@@ -124,7 +124,7 @@ export default class Paginator extends Component {
               >
                 <a
                   className={
-                    options.anchorClassName ? optionsa.anchorClassName : ""
+                    options.anchorClassName ? options.anchorClassName : ""
                   }
                   onClick={() =>
                     this.props.onChangePage(page, pager.numberOfPages)
@@ -143,7 +143,7 @@ export default class Paginator extends Component {
           >
             <a
               className={
-                options.anchorClassName ? optionsa.anchorClassName : ""
+                options.anchorClassName ? options.anchorClassName : ""
               }
               onClick={() =>
                 pager.currentPage < pager.numberOfPages &&
@@ -165,7 +165,7 @@ export default class Paginator extends Component {
           >
             <a
               className={
-                options.anchorClassName ? optionsa.anchorClassName : ""
+                options.anchorClassName ? options.anchorClassName : ""
               }
               onClick={() =>
                 this.props.onChangePage(
