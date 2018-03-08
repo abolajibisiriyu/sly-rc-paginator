@@ -205,7 +205,7 @@ var Paginator = function (_Component) {
             {
               className: options.anchorClassName ? options.anchorClassName : "",
               onClick: function onClick() {
-                return _this2.props.onChangePage(1, pager.numberOfPages);
+                return pager.currentPage !== 1 && _this2.props.onPageChange(1);
               }
             },
             "First"
@@ -221,7 +221,7 @@ var Paginator = function (_Component) {
             {
               className: options.anchorClassName ? options.anchorClassName : "",
               onClick: function onClick() {
-                return pager.currentPage > 1 && _this2.props.onChangePage(pager.currentPage - 1, pager.numberOfPages);
+                return pager.currentPage > 1 && _this2.props.onPageChange(pager.currentPage - 1);
               }
             },
             "Previous"
@@ -239,7 +239,7 @@ var Paginator = function (_Component) {
               {
                 className: options.anchorClassName ? options.anchorClassName : "",
                 onClick: function onClick() {
-                  return _this2.props.onChangePage(page, pager.numberOfPages);
+                  return page !== _this2.props.meta.currentPage && _this2.props.onPageChange(page);
                 }
               },
               page
@@ -256,7 +256,7 @@ var Paginator = function (_Component) {
             {
               className: options.anchorClassName ? options.anchorClassName : "",
               onClick: function onClick() {
-                return pager.currentPage < pager.numberOfPages && _this2.props.onChangePage(pager.currentPage + 1, pager.numberOfPages);
+                return pager.currentPage < pager.numberOfPages && _this2.props.onPageChange(pager.currentPage + 1);
               }
             },
             "Next"
@@ -272,7 +272,7 @@ var Paginator = function (_Component) {
             {
               className: options.anchorClassName ? options.anchorClassName : "",
               onClick: function onClick() {
-                return _this2.props.onChangePage(pager.numberOfPages, pager.numberOfPages);
+                return pager.currentPage !== pager.numberOfPages && _this2.props.onPageChange(pager.numberOfPages);
               }
             },
             "Last"

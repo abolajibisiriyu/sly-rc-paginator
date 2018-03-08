@@ -88,10 +88,11 @@ export default class Paginator extends Component {
             className={pager.currentPage === 1 ? options.disabledClassName : ""}
           >
             <a
-              className={
-                options.anchorClassName ? options.anchorClassName : ""
+              className={options.anchorClassName ? options.anchorClassName : ""}
+              onClick={() =>
+                pager.currentPage !== 1 &&
+                this.props.onPageChange(1)
               }
-              onClick={() => this.props.onChangePage(1, pager.numberOfPages)}
             >
               First
             </a>
@@ -100,15 +101,10 @@ export default class Paginator extends Component {
             className={pager.currentPage === 1 ? options.disabledClassName : ""}
           >
             <a
-              className={
-                options.anchorClassName ? options.anchorClassName : ""
-              }
+              className={options.anchorClassName ? options.anchorClassName : ""}
               onClick={() =>
                 pager.currentPage > 1 &&
-                this.props.onChangePage(
-                  pager.currentPage - 1,
-                  pager.numberOfPages
-                )
+                this.props.onPageChange(pager.currentPage - 1)
               }
             >
               Previous
@@ -127,7 +123,8 @@ export default class Paginator extends Component {
                     options.anchorClassName ? options.anchorClassName : ""
                   }
                   onClick={() =>
-                    this.props.onChangePage(page, pager.numberOfPages)
+                    page !== this.props.meta.currentPage &&
+                    this.props.onPageChange(page)
                   }
                 >
                   {page}
@@ -142,15 +139,10 @@ export default class Paginator extends Component {
             }
           >
             <a
-              className={
-                options.anchorClassName ? options.anchorClassName : ""
-              }
+              className={options.anchorClassName ? options.anchorClassName : ""}
               onClick={() =>
                 pager.currentPage < pager.numberOfPages &&
-                this.props.onChangePage(
-                  pager.currentPage + 1,
-                  pager.numberOfPages
-                )
+                this.props.onPageChange(pager.currentPage + 1)
               }
             >
               Next
@@ -164,14 +156,10 @@ export default class Paginator extends Component {
             }
           >
             <a
-              className={
-                options.anchorClassName ? options.anchorClassName : ""
-              }
+              className={options.anchorClassName ? options.anchorClassName : ""}
               onClick={() =>
-                this.props.onChangePage(
-                  pager.numberOfPages,
-                  pager.numberOfPages
-                )
+                pager.currentPage !== pager.numberOfPages &&
+                this.props.onPageChange(pager.numberOfPages)
               }
             >
               Last
