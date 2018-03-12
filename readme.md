@@ -3,7 +3,7 @@
     $ npm install sly-rc-paginator --save 
 
 
-![enter image descriptio](https://drive.google.com/thumbnail?id=1fVONVQQ9-Rv2j8jJzzIFCgC86OL3BMmJ&sz=w1500-h400)
+![paginator image](https://drive.google.com/thumbnail?id=1fVONVQQ9-Rv2j8jJzzIFCgC86OL3BMmJ&sz=w1500-h400)
 
 This paginator component assumes that u have a styles for a paginator with the following structure
 
