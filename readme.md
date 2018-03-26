@@ -25,25 +25,25 @@ Also the paginator truncates the list pages to just 10.
         constructor()  {
     	    super();
     	    this.state  =  {
-    			    meta:  { // demo meta data from API
-    				    totalItems:  100,
-    				    currentPage:  1,
-    				    itemsPerPage:  5
-    			    }
-    		 };
+    			meta:  { // demo meta data from API
+    			    totalItems:  100,
+    			    currentPage:  1,
+    				itemsPerPage:  5
+    			}
+    		};
     	}
         onPageChange(currentPage)  {
-    	    this.setState(prevSate => {
-    			  return {
-    				     meta: { // update meta data
-    							  ...prevSate.meta,
-    							  currentPage
-    						}
-    			    };
-    	    });
+    	  this.setState(prevSate => {
+    	    return {
+    		  posts: json, // do stuff with json
+    		     meta: { // update meta data
+    					...prevSate.meta,
+    					currentPage
+    				}
+    	    };
+    	  });
         }
         render()  {
-
     	    const  pagintorOptions  =  {
     		    ulClassName:  "pagination",
     		    liClassName:  "page-item",
