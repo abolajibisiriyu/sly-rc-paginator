@@ -1,6 +1,6 @@
 {
   "name": "sly-rc-paginator",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A paginator component for react",
   "main": "build/index.js",
   "peerDependencies": {
@@ -21,8 +21,10 @@
     "email": "abolajibisiriyu@gmail.com"
   },
   "repository": {
-    "url": ""
+    "type": "git",
+    "url": "https://github.com/abolajibisiriyu/sly-rc-paginator.git"
   },
+  "keywords": ["react", "paginator", "paginate", "react-paginator"],
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "6.26.0",
