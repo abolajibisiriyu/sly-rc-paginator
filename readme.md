@@ -4,7 +4,7 @@
 
 ![paginator image](https://drive.google.com/thumbnail?id=1fVONVQQ9-Rv2j8jJzzIFCgC86OL3BMmJ&sz=w1500-h400)
 
-This paginator component assumes that you have a styles for a paginator with the following structure
+This paginator component assumes that you have styles for a paginator with the following structure
 
     <ul>
         <li>
