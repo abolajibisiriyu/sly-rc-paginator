@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Paginator Component renders correctly 1`] = `
+<ul
+  className="ulClassName"
+>
+  <li
+    className="liClassName disabledClassName"
+  >
+    <a
+      className="anchorClassName"
+      onClick={[Function]}
+    >
+      First
+    </a>
+  </li>
+  <li
+    className="liClassName disabledClassName"
+  >
+    <a
+      className="anchorClassName"
+      onClick={[Function]}
+    >
+      Previous
+    </a>
+  </li>
+  <li
+    className="liClassName activeClassName"
+  >
+    <a
+      className="anchorClassName"
+      onClick={[Function]}
+    >
+      1
+    </a>
+  </li>
+  <li
+    className="liClassName "
+  >
+    <a
+      className="anchorClassName"
+      onClick={[Function]}
+    >
+      2
+    </a>
+  </li>
+  <li
+    className="liClassName "
+  >
+    <a
+      className="anchorClassName"
+      onClick={[Function]}
+    >
+      Next
+    </a>
+  </li>
+  <li
+    className="liClassName "
+  >
+    <a
+      className="anchorClassName"
+      onClick={[Function]}
+    >
+      Last
+    </a>
+  </li>
+</ul>
+`;
