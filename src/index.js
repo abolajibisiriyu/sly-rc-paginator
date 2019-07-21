@@ -1,7 +1,10 @@
 import React, { Component } from "react";
-import _ from "lodash";
+import isEmpty from "lodash/isEmpty";
+import isEqual from "lodash/isEqual";
+import PropTypes from "prop-types";
 
-export default class Paginator extends Component {
+import { getPager } from "./helpers";
+class Paginator extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,9 +18,9 @@ export default class Paginator extends Component {
       meta: { totalItems, currentPage, itemsPerPage }
     } = this.props;
 
-    !_.isEmpty(meta) &&
+    !isEmpty(meta) &&
       this.setState({
-        pager: this.getPager(totalItems, currentPage, itemsPerPage)
+        pager: getPager(totalItems, currentPage, itemsPerPage)
       });
   }
 
@@ -27,54 +30,12 @@ export default class Paginator extends Component {
       meta: { totalItems, currentPage, itemsPerPage }
     } = this.props;
 
-    if (!_.isEqual(meta, prevProps.meta)) {
-      !_.isEmpty(meta) &&
+    if (!isEqual(meta, prevProps.meta)) {
+      !isEmpty(meta) &&
         this.setState({
-          pager: this.getPager(totalItems, currentPage, itemsPerPage)
+          pager: getPager(totalItems, currentPage, itemsPerPage)
         });
     }
-  }
-
-  getPager(_totalItems, _currentPage, _itemsPerPage) {
-    // console.log("Total items: ", _totalItems);
-    // console.log("Items per page: ", _itemsPerPage);
-    // console.log("Current page: ", _currentPage);
-    const currentPage = _currentPage;
-
-    // default page size is 10
-    const itemsPerPage = _itemsPerPage || 10;
-
-    // calculate total pages
-    const numberOfPages = Math.ceil(_totalItems / itemsPerPage);
-
-    let startPage, endPage;
-    if (numberOfPages <= 10) {
-      // less than 10 total pages so show all
-      startPage = 1;
-      endPage = numberOfPages;
-    } else {
-      // more than 10 total pages so calculate start and end pages
-      if (currentPage <= 6) {
-        startPage = 1;
-        endPage = 10;
-      } else if (currentPage + 4 >= numberOfPages) {
-        startPage = numberOfPages - 9;
-        endPage = numberOfPages;
-      } else {
-        startPage = currentPage - 5;
-        endPage = currentPage + 4;
-      }
-    }
-
-    // create an array of pages to ng-repeat in the pager control
-    const pages = _.range(startPage, endPage + 1);
-
-    // return object with all pager properties
-    return {
-      currentPage,
-      numberOfPages,
-      pages
-    };
   }
 
   render() {
@@ -82,26 +43,29 @@ export default class Paginator extends Component {
     const { options } = this.props;
     // console.log(pager);
     return (
-      !_.isEmpty(pager) && (
-        <ul className={options.ulClassName}>
+      !isEmpty(pager) && (
+        <ul className={options.ulClassName || ""}>
           <li
-            className={pager.currentPage === 1 ? options.disabledClassName : ""}
+            className={`${options.liClassName || ""} ${
+              pager.currentPage === 1 ? options.disabledClassName : ""
+            }`}
           >
             <a
-              className={options.anchorClassName ? options.anchorClassName : ""}
+              className={options.anchorClassName || ""}
               onClick={() =>
-                pager.currentPage !== 1 &&
-                this.props.onPageChange(1)
+                pager.currentPage !== 1 && this.props.onPageChange(1)
               }
             >
               First
             </a>
           </li>
           <li
-            className={pager.currentPage === 1 ? options.disabledClassName : ""}
+            className={`${options.liClassName || ""} ${
+              pager.currentPage === 1 ? options.disabledClassName : ""
+            }`}
           >
             <a
-              className={options.anchorClassName ? options.anchorClassName : ""}
+              className={options.anchorClassName || ""}
               onClick={() =>
                 pager.currentPage > 1 &&
                 this.props.onPageChange(pager.currentPage - 1)
@@ -114,14 +78,12 @@ export default class Paginator extends Component {
             pager.pages.map((page, index) => (
               <li
                 key={index}
-                className={
+                className={`${options.liClassName || ""} ${
                   pager.currentPage === page ? options.activeClassName : ""
-                }
+                }`}
               >
                 <a
-                  className={
-                    options.anchorClassName ? options.anchorClassName : ""
-                  }
+                  className={options.anchorClassName || ""}
                   onClick={() =>
                     page !== this.props.meta.currentPage &&
                     this.props.onPageChange(page)
@@ -132,14 +94,14 @@ export default class Paginator extends Component {
               </li>
             ))}
           <li
-            className={
+            className={`${options.liClassName || ""} ${
               pager.currentPage === pager.numberOfPages
                 ? options.disabledClassName
                 : ""
-            }
+            }`}
           >
             <a
-              className={options.anchorClassName ? options.anchorClassName : ""}
+              className={options.anchorClassName || ""}
               onClick={() =>
                 pager.currentPage < pager.numberOfPages &&
                 this.props.onPageChange(pager.currentPage + 1)
@@ -149,14 +111,14 @@ export default class Paginator extends Component {
             </a>
           </li>
           <li
-            className={
+            className={`${options.liClassName || ""} ${
               pager.currentPage === pager.numberOfPages
                 ? options.disabledClassName
                 : ""
-            }
+            }`}
           >
             <a
-              className={options.anchorClassName ? options.anchorClassName : ""}
+              className={options.anchorClassName || ""}
               onClick={() =>
                 pager.currentPage !== pager.numberOfPages &&
                 this.props.onPageChange(pager.numberOfPages)
@@ -170,3 +132,21 @@ export default class Paginator extends Component {
     );
   }
 }
+
+Paginator.propTypes = {
+  meta: PropTypes.shape({
+    totalItems: PropTypes.number.isRequired,
+    currentPage: PropTypes.number.isRequired,
+    itemsPerPage: PropTypes.number.isRequired
+  }).isRequired,
+  options: PropTypes.shape({
+    ulClassName: PropTypes.string.isRequired,
+    liClassName: PropTypes.string.isRequired,
+    activeClassName: PropTypes.string.isRequired,
+    disabledClassName: PropTypes.string.isRequired,
+    anchorClassName: PropTypes.string
+  }).isRequired,
+  onPageChange: PropTypes.func.isRequired
+};
+
+export default Paginator;

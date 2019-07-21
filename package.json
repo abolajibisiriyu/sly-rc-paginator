@@ -8,13 +8,15 @@
   },
   "dependencies": {
     "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
     "lodash": "^4.17.15",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "webpack": "^4.36.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:watch": "jest --watch --updateSnapshot",
     "start": "webpack --watch",
     "build": "webpack"
   },
@@ -33,12 +35,28 @@
     "react-paginator"
   ],
   "devDependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
     "babel-cli": "^6.26.0",
+    "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react-app": "^9.0.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "jest": "^24.8.0",
+    "react-test-renderer": "^16.8.6",
     "webpack-cli": "^3.3.6"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/__tests__/setup.js"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/src/__tests__/setup.js"
+    ]
   }
 }
