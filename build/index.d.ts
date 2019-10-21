@@ -15,10 +15,10 @@ declare module "sly-rc-paginator" {
       anchorClassName?: string;
     };
     onPageChange: (page: number) => void;
-    prevComponent?: Function | string;
-    nextComponent?: Function | string;
-    firstComponent?: Function | string;
-    lastComponent?: Function | string;
+    prevComponent?: JSX.Element | string | null;
+    nextComponent?: JSX.Element | string | null;
+    firstComponent?: JSX.Element | string | null;
+    lastComponent?: JSX.Element | string | null;
     showFirst?: boolean;
     showLast?: boolean;
   }
