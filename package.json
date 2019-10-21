@@ -1,8 +1,9 @@
 {
   "name": "sly-rc-paginator",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A paginator component for react",
   "main": "build/index.js",
+  "typings": "./build/index.d.ts",
   "peerDependencies": {
     "react": "^16.8.6"
   },
