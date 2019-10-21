@@ -66,16 +66,22 @@ Also the paginator truncates the list pages to just 10.
 
 ### Props
 
-| name                      | type     | required | description                                                                                                          |
-| ------------------------- | -------- | -------- | -------------------------------------------------------------------------------------------------------------------- |
-| meta                      | object   | YES      | meta data that with the following keys `totalItems`, `currentPage` , `itemsPerPage`                                  |
-| meta.totalItems           | number   | YES      | total number of rows to be paginated                                                                                 |
-| meta.currentPage          | number   | YES      | current page being viewed                                                                                            |
-| meta.itemsPerPage         | number   | YES      | number of items per page                                                                                             |
-| options                   | object   | YES      | the paginator's options with the following keys `ulClassName`, `liClassName`, `activeClassName`, `disabledClassName` |
-| options.ulClassName       | string   | YES      | class name for the `ul` tag                                                                                          |
-| options.liClassName       | string   | YES      | class name for the `li` tag                                                                                          |
-| options.activeClassName   | string   | YES      | class name for the current page to be applied to the `li` tag                                                        |
-| options.disabledClassName | string   | YES      | class name for the disabled links to be applied to the `li` tag                                                      |
-| options.anchorClassName   | string   | NO       | class name for the `a` tags                                                                                          |
-| onPageChange              | function | YES      | the function that gets called when a page is clicked. It returns the `currentPage` as a number                       |
+| name                      | type                | required | description                                                                                                          |
+| ------------------------- | ------------------- | -------- | -------------------------------------------------------------------------------------------------------------------- |
+| meta                      | object              | YES      | meta data that with the following keys `totalItems`, `currentPage` , `itemsPerPage`                                  |
+| meta.totalItems           | number              | YES      | total number of rows to be paginated                                                                                 |
+| meta.currentPage          | number              | YES      | current page being viewed                                                                                            |
+| meta.itemsPerPage         | number              | YES      | number of items per page                                                                                             |
+| options                   | object              | YES      | the paginator's options with the following keys `ulClassName`, `liClassName`, `activeClassName`, `disabledClassName` |
+| options.ulClassName       | string              | YES      | class name for the `ul` tag                                                                                          |
+| options.liClassName       | string              | YES      | class name for the `li` tag                                                                                          |
+| options.activeClassName   | string              | YES      | class name for the current page to be applied to the `li` tag                                                        |
+| options.disabledClassName | string              | YES      | class name for the disabled links to be applied to the `li` tag                                                      |
+| options.anchorClassName   | string              | NO       | class name for the `a` tags                                                                                          |
+| onPageChange              | function            | YES      | the function that gets called when a page is clicked. It returns the `currentPage` as a number                       |
+| firstComponent            | component or string | NO       | custom component for the link to the first page e.g "<<"                                                             |
+| lastComponent             | component or string | NO       | custom component for the link to the last page e.g ">>"                                                              |
+| prevComponent             | component or string | NO       | custom component for the link to the previous page e.g "<"                                                           |
+| nextComponent             | component or string | NO       | custom component for the link to the next page e.g ">"                                                               |
+| showFirst                 | boolean             | NO       | condition to show link to first page                                                                                 |
+| showLast                  | boolean             | NO       | condition to show link to last page                                                                                  |
