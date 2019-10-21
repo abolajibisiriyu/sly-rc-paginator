@@ -12,15 +12,15 @@ declare module "sly-rc-paginator" {
       liClassName: string;
       activeClassName: string;
       disabledClassName: string;
-      anchorClassName: string;
+      anchorClassName?: string;
     };
     onPageChange: (page: number) => void;
-    prevComponent: Function | string;
-    nextComponent: Function | string;
-    firstComponent: Function | string;
-    lastComponent: Function | string;
-    showFirst: boolean;
-    showLast: boolean;
+    prevComponent?: Function | string;
+    nextComponent?: Function | string;
+    firstComponent?: Function | string;
+    lastComponent?: Function | string;
+    showFirst?: boolean;
+    showLast?: boolean;
   }
 
   const Paginator: React.SFC<PaginatorProps>;
