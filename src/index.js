@@ -40,25 +40,35 @@ class Paginator extends Component {
 
   render() {
     const { pager } = this.state;
-    const { options } = this.props;
+    const {
+      options,
+      prevComponent,
+      nextComponent,
+      firstComponent,
+      lastComponent,
+      showFirst = true,
+      showLast = true
+    } = this.props;
     // console.log(pager);
     return (
       !isEmpty(pager) && (
         <ul className={options.ulClassName || ""}>
-          <li
-            className={`${options.liClassName || ""} ${
-              pager.currentPage === 1 ? options.disabledClassName : ""
-            }`}
-          >
-            <a
-              className={options.anchorClassName || ""}
-              onClick={() =>
-                pager.currentPage !== 1 && this.props.onPageChange(1)
-              }
+          {showFirst && (
+            <li
+              className={`${options.liClassName || ""} ${
+                pager.currentPage === 1 ? options.disabledClassName : ""
+              }`}
             >
-              First
-            </a>
-          </li>
+              <a
+                className={options.anchorClassName || ""}
+                onClick={() =>
+                  pager.currentPage !== 1 && this.props.onPageChange(1)
+                }
+              >
+                {firstComponent ? firstComponent : "First"}
+              </a>
+            </li>
+          )}
           <li
             className={`${options.liClassName || ""} ${
               pager.currentPage === 1 ? options.disabledClassName : ""
@@ -71,7 +81,7 @@ class Paginator extends Component {
                 this.props.onPageChange(pager.currentPage - 1)
               }
             >
-              Previous
+              {prevComponent ? prevComponent : "Previous"}
             </a>
           </li>
           {pager.pages &&
@@ -107,26 +117,28 @@ class Paginator extends Component {
                 this.props.onPageChange(pager.currentPage + 1)
               }
             >
-              Next
+              {nextComponent ? nextComponent : "Next"}
             </a>
           </li>
-          <li
-            className={`${options.liClassName || ""} ${
-              pager.currentPage === pager.numberOfPages
-                ? options.disabledClassName
-                : ""
-            }`}
-          >
-            <a
-              className={options.anchorClassName || ""}
-              onClick={() =>
-                pager.currentPage !== pager.numberOfPages &&
-                this.props.onPageChange(pager.numberOfPages)
-              }
+          {showLast && (
+            <li
+              className={`${options.liClassName || ""} ${
+                pager.currentPage === pager.numberOfPages
+                  ? options.disabledClassName
+                  : ""
+              }`}
             >
-              Last
-            </a>
-          </li>
+              <a
+                className={options.anchorClassName || ""}
+                onClick={() =>
+                  pager.currentPage !== pager.numberOfPages &&
+                  this.props.onPageChange(pager.numberOfPages)
+                }
+              >
+                {lastComponent ? lastComponent : "Last"}
+              </a>
+            </li>
+          )}
         </ul>
       )
     );
